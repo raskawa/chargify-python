@@ -1,4 +1,10 @@
-import simplejson
+try:
+    import simplejson as json
+except ImportError:
+    try:
+        import json
+    except ImportError:
+        raise EnvironmentError("You must have a JSON module installed such as simplejson")
 import urllib
 import urllib2
 import base64
@@ -77,7 +83,7 @@ class ChargifyHttpClient(object):
             raise ChargifyConnectionError(e)
             
         # Parse and return JSON Result
-        return simplejson.loads(result)
+        return json.loads(result)
         
 class Chargify(object):
     """
@@ -135,7 +141,7 @@ class Chargify(object):
         # Convert the data to a JSON string
         data = kwargs.pop('data', None)
         if data:
-            data = simplejson.dumps(data)
+            data = json.dumps(data)
             
         # Build query string
         if method == 'GET' and kwargs:
