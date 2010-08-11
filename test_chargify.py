@@ -17,7 +17,6 @@ class ChargifyTestCase(unittest.TestCase):
         being constructed from the Chargify API.
         """
         url, method, data = result
-        print url, method, data
         self.assertEqual(url,expected_url)
         self.assertEqual(method,expected_method)
         self.assertEqual(data,expected_data)
