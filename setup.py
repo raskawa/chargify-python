@@ -1,13 +1,14 @@
 from setuptools import setup
 
 setup(
-    name='Chargify Python',
+    name='chargify-python',
     version='0.1',
     url='http://github.com/hindsightlabs/chargify-python',
     license='MIT',
     author='Steven Wei',
     author_email='steve@hindsightlabs.com',
     description='A Chargify API client written in Python.',
+    long_description = open("README.md").read(),
     py_modules=['chargify'],
     zip_safe=False,
     platforms='any',
