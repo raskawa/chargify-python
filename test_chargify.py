@@ -199,6 +199,15 @@ class TestTransactions(ChargifyTestCase):
         # List transactions for a subscription
         result = self.chargify.subscriptions.transactions(subscription_id=123)
         self.assertResult(result,'https://subdomain.chargify.com/subscriptions/123/transactions.json','GET',None)
-                     
+
+def suite():
+    suite = unittest.TestSuite()
+    for test_case in (TestCustomers, TestProducts, TestSubscriptions, \
+                      TestCharges, TestComponents, TestMigrations, \
+                      TestReactivate, TestTransactions):
+        suite.addTest(unittest.makeSuite(test_case))
+    return suite
+        
+            
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(defaultTest='suite')

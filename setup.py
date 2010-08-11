@@ -11,6 +11,7 @@ setup(
     py_modules=['chargify'],
     zip_safe=False,
     platforms='any',
+    test_suite='test_chargify.suite',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
