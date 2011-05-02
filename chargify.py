@@ -86,7 +86,7 @@ class ChargifyHttpClient(object):
         result = response.read()
 
         try:
-            data = simplejson.loads(result)
+            data = json.loads(result)
         except ValueError:
             data = {'body': result} #Is not JSON
 
@@ -94,12 +94,7 @@ class ChargifyHttpClient(object):
             error_class = ERROR_CODES[e.code]
             raise error_class(data)
             
-<<<<<<< HEAD
-        # Parse and return JSON Result
-        return json.loads(result)
-=======
         return data
->>>>>>> FETCH_HEAD
         
 class Chargify(object):
     """
