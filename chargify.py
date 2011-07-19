@@ -48,7 +48,10 @@ IDENTIFIERS = {
     'product_id':'products',
     'subscription_id':'subscriptions',
     'component_id':'components',
-    'handle':'handle'
+    'handle':'handle',
+    'statement_id':'statements',
+    'product_family_id':'product_families',
+    'coupon_id':'coupons'
 }
 
 class ChargifyHttpClient(object):
