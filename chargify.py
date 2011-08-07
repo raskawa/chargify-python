@@ -52,7 +52,8 @@ IDENTIFIERS = {
     'statement_id':'statements',
     'product_family_id':'product_families',
     'coupon_id':'coupons',
-    'transaction_id':'transactions'
+    'transaction_id':'transactions',
+    'usage_id':'usages',
 }
 
 class ChargifyHttpClient(object):
