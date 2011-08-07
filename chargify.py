@@ -54,6 +54,7 @@ IDENTIFIERS = {
     'coupon_id':'coupons',
     'transaction_id':'transactions',
     'usage_id':'usages',
+    'migration_id':'migrations',
 }
 
 class ChargifyHttpClient(object):
