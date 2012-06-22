@@ -161,8 +161,10 @@ class Chargify(object):
             data = json.dumps(data)
 
         # Build query string
-        if method == 'GET' and kwargs:
-            args = "?%s" % (urllib.urlencode(kwargs, True))
+        get_params = kwargs.pop("get_params", {})
+        if method == 'GET' and (kwargs or get_params):
+            get_params.update(kwargs)
+            args = "?%s" % (urllib.urlencode(get_params, True))
         else:
             args = ''
 
