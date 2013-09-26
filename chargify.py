@@ -164,9 +164,12 @@ class Chargify(object):
         get_params = kwargs.pop("get_params", {})
         if method == 'GET' and (kwargs or get_params):
             get_params.update(kwargs)
+        
+        # If there are GET parameters, pass them, even for non-GET requests.
+        # This allows for certain API calls, such as adding coupon codes
+        # via /subscriptions/<subscription_id>/add_coupon.json?code=<coupon_code>
+        if get_params:
             args = "?%s" % (urllib.urlencode(get_params, True))
-        else:
-            args = ''
 
         # Build url
         url = self.domain % self.sub_domain
