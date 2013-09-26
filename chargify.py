@@ -170,6 +170,8 @@ class Chargify(object):
         # via /subscriptions/<subscription_id>/add_coupon.json?code=<coupon_code>
         if get_params:
             args = "?%s" % (urllib.urlencode(get_params, True))
+        else:
+            args = ''
 
         # Build url
         url = self.domain % self.sub_domain
