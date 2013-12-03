@@ -179,5 +179,4 @@ class Chargify(object):
 
     def __call__(self, **kwargs):
         url, method, data = self.construct_request(**kwargs)
-        print "hello world 2: {0}... {1}... {2}... {3}...".format(url, method, data, self.api_key)
         return self.client.make_request(url, method, data, self.api_key)
