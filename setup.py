@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='chargify-python',
-    version='0.1',
+    version='0.1.1',
     url='http://github.com/hindsightlabs/chargify-python',
     license='MIT',
     author='Steven Wei',

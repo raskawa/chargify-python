@@ -62,6 +62,13 @@ class TestCustomers(ChargifyTestCase):
         result = self.chargify.customers.delete(customer_id=123)
         self.assertResult(result, '/customers/123.json', 'DELETE', None)
 
+class TestManagementURL(ChargifyTestCase):
+
+    def test_construct_request(self):
+        # Get customer specific management link for billing portal
+        result = self.chargify.customers.management_link.read(customer_id=123)
+        self.assertResult(result, '/portal/customers/123/management_link', 'GET', None)
+
 class TestProducts(ChargifyTestCase):
     
     def test_construct_request(self):
@@ -186,6 +193,7 @@ class TestTransactions(ChargifyTestCase):
         # List transactions for a subscription
         result = self.chargify.subscriptions.transactions(subscription_id=123)
         self.assertResult(result, '/subscriptions/123/transactions.json', 'GET', None)
+
 
 def suite():
     """Creates a unittest TestSuite for use with setuptools"""

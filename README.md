@@ -70,3 +70,6 @@ See the test cases for a full list of examples for all supported API calls.
     
     # List transactions for a subscription
     result = chargify.subscriptions.transactions(subscription_id=123)
+
+    # Create / Get a New Billing Portal Management Link
+    result = chargify.customers.management_link.read(customer_id=123)

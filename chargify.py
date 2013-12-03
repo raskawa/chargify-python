@@ -44,6 +44,7 @@ VERBS = {
 # A list of identifiers that should be extracted and placed into the url string if they are
 # passed into the kwargs.
 IDENTIFIERS = {
+    'customer_id':'management_link',
     'customer_id':'customers',
     'product_id':'products',
     'subscription_id':'subscriptions',
@@ -153,6 +154,7 @@ class Chargify(object):
         for identifier, name in IDENTIFIERS.items():
             value = kwargs.pop(identifier, None)
             if value:
+
                 path.insert(path.index(name)+1, str(value))
 
         # Convert the data to a JSON string
@@ -171,10 +173,11 @@ class Chargify(object):
         # Build url
         url = self.domain % self.sub_domain
         url = url + '/'.join(path) + '.json' + args
-
+        if "management_link" in url:
+            url = url.replace("customers","portal/customers").replace(".json","")
         return url, method, data
 
     def __call__(self, **kwargs):
         url, method, data = self.construct_request(**kwargs)
+        print "hello world 2: {0}... {1}... {2}... {3}...".format(url, method, data, self.api_key)
         return self.client.make_request(url, method, data, self.api_key)
-
